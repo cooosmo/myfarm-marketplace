@@ -1,0 +1,41 @@
+/* GENERAL */
+.logo-style {
+    width: 180px;
+    display: block;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* BACKEND */
+.input-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+#prodotti-aggiunti {
+    margin: 0 auto;
+}
+
+.overlay {
+    position: fixed;
+    top:0;
+    left:0;
+    background-color: #00000080;
+    height: 100vh;
+    width: 100%;
+}
+
+table.no-bg {--bs-table-bg: unset!important;}
+
+/* FRONTEND */
+.card-img-style {
+    height: 100%;
+    object-fit: cover;
+}
+
+/* DETAIL */
+.detail-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}

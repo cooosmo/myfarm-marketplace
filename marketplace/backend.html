@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MyFarm.store Marketplace</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+  <body>
+    <div class="container">
+      
+        <h1 class=" text-center my-3"><img src="./assets/img/myfarm-logo.png" alt="" class="logo-style"></h1>
+        <p class="h3 text-center mb-5"> Non deve essere bello, <del>deve</del> <mark>dovrebbe</mark> funzionare</p>
+        <div id="product-container">
+          <div class="row">
+            <div class="col-3 bg-light rounded p-3">
+              <h2 class="h3">Aggiungi prodotti</h2>
+              <table class="table no-bg">
+                <tbody class="bg-light">
+                  <tr>
+                    <td>
+                        <div class="input-wrapper mb-3">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" id="name">
+                        </div>
+                        <div class="input-wrapper mb-3">
+                            <label for="description">Description</label>
+                            <input type="text" name="description" id="description">
+                        </div>
+                        <div class="input-wrapper mb-3">
+                            <label for="brand">Brand</label>
+                            <input type="text" name="brand" id="brand">
+                        </div>
+                        <div class="input-wrapper mb-3">
+                            <label for="imageUrl">imageUrl</label>
+                            <input type="text" name="imageUrl" id="imageUrl">
+                        </div>
+                        <div class="input-wrapper mb-3">
+                            <label for="price">Price</label>
+                            <input type="number" name="price" id="price">
+                        </div>
+                        <div>
+                            <button id="btn" class="btn btn-primary" onclick="aggiungiProdotto()">AGGIUNGI PRODOTTO</button>
+                        </div>
+                    </td>
+                    <td >
+                        
+                    </td>
+                    
+                  </tr>
+    
+                </tbody>
+              </table>
+            </div>
+            <div class="col-9">
+              <div >
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Nome</th>
+                      <th scope="col">Descrizione</th>
+                      <th scope="col">Immagine</th>
+                      <th scope="col">Prezzo</th>
+                      <th scope="col">Azioni</th>
+                    </tr>
+                  </thead>
+                  <tbody id="prodotti-aggiunti">
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          
+            
+              
+
+              <div class="modal" tabindex="-1" id="delete-modal">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Cancella prodotto</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="chiudiModal()"></button>
+                    </div>
+                    <div class="modal-body">
+                      <p>Sei sicuro di voler cancellare il prodotto?</p>
+                    </div>
+                    <div class="modal-footer" >
+                        
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="chiudiModal()">Chiudi</button>
+                      <div class="btn-wrapper" id="modal-footer">
+                            
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="modal" tabindex="-1" id="edit-modal">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Modifica prodotto</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="chiudiModal()"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-wrapper mb-3">
+                            <label for="name_mod">Nome</label>
+                            <input type="text" name="name_mod" id="name_mod">
+                            <input type="text" name="id_mod" id="id_mod" class="d-none">
+                        </div>
+                        <div class="input-wrapper mb-3">
+                            <label for="description_mod">Descrizione</label>
+                            <input type="text" name="description_mod" id="description_mod">
+                        </div>
+                        <div class="input-wrapper mb-3">
+                            <label for="brand_mod">Brand</label>
+                            <input type="text" name="brand_mod" id="brand_mod">
+                        </div>
+                        <div class="input-wrapper mb-3">
+                            <label for="imageUrl_mod">imageUrl</label>
+                            <input type="text" name="imageUrl_mod" id="imageUrl_mod">
+                        </div>
+                        <div class="input-wrapper mb-3">
+                            <label for="price_mod">Prezzo</label>
+                            <input type="number" name="price_mod" id="price_mod">
+                        </div>
+                        <div>
+                            <button id="btn" class="btn btn-primary" onclick="modificaProdotto()">MODIFICA PRODOTTO</button>
+                        </div>
+                    </div>
+                    <div class="modal-footer" >
+                        
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="chiudiModal()">Chiudi</button>
+                      <div class="btn-wrapper" id="modal-footer">
+                            
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            
+        </div>
+    </div>
+    <div class="overlay d-none" id="overlay">
+
+    </div>
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="./assets/js/back.js"></script>
+</body>
+</html>
